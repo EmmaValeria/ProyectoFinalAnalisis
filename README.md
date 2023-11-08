@@ -3,10 +3,10 @@ Equipo Voraz
 
 Roles
 
-Bautista Rico Emmanuel Leonardo 
+González Medina María Emma Valeria (Project Manager)
 
-González Medina María Emma Valeria
+González Zaragoza Emmanuel Mateo (Backend)
 
-González Zaragoza Emmanuel Mateo
+Zarate Ortíz Jesús Enrique (Frontend)
 
-Zarate Ortíz Jesús Enrique
+Bautista Rico Emmanuel Leonardo (Tester)
