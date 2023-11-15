@@ -1,0 +1,142 @@
+{
+    "almacen": {
+      "nombre": "Cucei",
+      "coordenadas": {
+        "latitud": 20.654986912292184,
+        "longitud": -103.32528602468746
+      }
+    },
+    "clientes": [
+      {
+        "nombre": "Forum",
+        "coordenadas": {
+          "latitud": 20.648490809084294,
+          "longitud": -103.32179965573322
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Medrano",
+        "coordenadas": {
+          "latitud": 20.662263367375875,
+          "longitud": -103.31867272121757
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Hospital_la_luz",
+        "coordenadas": {
+          "latitud": 20.65521736421344,
+          "longitud": -103.32950312317126
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Plaza_de_la_bandera",
+        "coordenadas": {
+          "latitud": 20.66451973980312,
+          "longitud": -103.3336030607425
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Tlaquepaque_centro",
+        "coordenadas": {
+          "latitud": 20.63964794033803,
+          "longitud": -103.31201288756297
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Gotcha_revolucion",
+        "coordenadas": {
+          "latitud": 20.65677180661904,
+          "longitud": -103.31972128118208
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Parque_GlezG",
+        "coordenadas": {
+          "latitud": 20.648775440488645,
+          "longitud": -103.33670887277106
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Teatro_diana",
+        "coordenadas": {
+          "latitud": 20.66548043709502,
+          "longitud": -103.34898266143838
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Museo_ejercito",
+        "coordenadas": {
+          "latitud": 20.669796934465385,
+          "longitud": -103.33261045731092
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Central_vieja",
+        "coordenadas": {
+          "latitud": 20.662830247650984,
+          "longitud": -103.34512028056099
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Arena_jalisco",
+        "coordenadas": {
+          "latitud": 20.664315965615412,
+          "longitud": -103.31634554185884
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Prepa4",
+        "coordenadas": {
+          "latitud": 20.640321852166537,
+          "longitud": -103.32531484872922
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Prepa_vocacional",
+        "coordenadas": {
+          "latitud": 20.65665338107397,
+          "longitud": -103.32747457319365
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Code",
+        "coordenadas": {
+          "latitud": 20.648625354781878,
+          "longitud": -103.32446490459996
+        },
+        "paquetes": 1
+      },
+      {
+        "nombre": "Cementerio_tlaquepaque",
+        "coordenadas": {
+          "latitud": 20.645466229190006,
+          "longitud": -103.31484530792098
+        },
+        "paquetes": 1
+      }
+    ],
+    "vehiculos": [
+      {
+        "nombre": "Vehiculo_1",
+        "capacidad": 10
+      },
+      {
+        "nombre": "Vehiculo_2",
+        "capacidad": 15
+      }
+    ]
+  }
+  
