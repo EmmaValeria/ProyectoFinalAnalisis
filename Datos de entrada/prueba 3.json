@@ -1,0 +1,149 @@
+{
+  "almacen": {
+    "nombre": "Cucei",
+    "coordenadas": {
+      "latitud": 20.654986912292184,
+      "longitud": -103.32528602468746
+    }
+  },
+  "clientes": [
+    {
+      "nombre": "Pista_atletismo",
+      "coordenadas": {
+        "latitud": 20.655213502188545,
+        "longitud": -103.32405798496514
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Imms_r46",
+      "coordenadas": {
+        "latitud": 20.647955129977166,
+        "longitud": -103.36008095246082
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Parque_sanjacinto",
+      "coordenadas": {
+        "latitud": 20.663243491527307,
+        "longitud": -103.29721867803184
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Centrosalud_yuguslava",
+      "coordenadas": {
+        "latitud": 20.67086210858187,
+        "longitud": -103.31436269667725
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Parroquia_sanjuan",
+      "coordenadas": {
+        "latitud": 20.675605902804847,
+        "longitud": -103.31423639091575
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Parque_bomberos",
+      "coordenadas": {
+        "latitud": 20.653456278561784,
+        "longitud": -103.33048885093523
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Estadio_habaneros",
+      "coordenadas": {
+        "latitud": 20.646517804954847,
+        "longitud": -103.33594537866998
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Registro_civil_tlaquepaque",
+      "coordenadas": {
+        "latitud": 20.63279660573149,
+        "longitud": -103.31443730548952
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Capilla_sta_maria",
+      "coordenadas": {
+        "latitud": 20.63503279575177,
+        "longitud": -103.31370328464097
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Notaria_publica18",
+      "coordenadas": {
+        "latitud": 20.637451644055567,
+        "longitud": -103.3096505525804
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Plaza_toros",
+      "coordenadas": {
+        "latitud": 20.635339721266565,
+        "longitud": -103.31018935511956
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Santuario_soledad",
+      "coordenadas": {
+        "latitud": 20.63973011183506,
+        "longitud": -103.31253031921545
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Recaudadora",
+      "coordenadas": {
+        "latitud": 20.641982078659467,
+        "longitud": -103.31722682085847
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Glorieta_ejercito",
+      "coordenadas": {
+        "latitud": 20.658398347937812,
+        "longitud": -103.33518762718113
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Cecati",
+      "coordenadas": {
+        "latitud": 20.660208859721077,
+        "longitud": -103.32633426128349
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Templo_providencia",
+      "coordenadas": {
+        "latitud": 20.666405613285388,
+        "longitud": -103.32370329647145
+      },
+      "paquetes": 1
+    }
+  ],
+  "vehiculos": [
+    {
+      "nombre": "Vehiculo_1",
+      "capacidad": 10
+    },
+    {
+      "nombre": "Vehiculo_2",
+      "capacidad": 15
+    }
+  ]
+}

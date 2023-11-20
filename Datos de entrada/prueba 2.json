@@ -1,0 +1,141 @@
+{
+  "almacen": {
+    "nombre": "Cucei",
+    "coordenadas": {
+      "latitud": 20.654986912292184,
+      "longitud": -103.32528602468746
+    }
+  },
+  "clientes": [
+    {
+      "nombre": "Parroquia_divino_amor",
+      "coordenadas": {
+        "latitud": 20.642059802364106,
+        "longitud": -103.3444894494562
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Parque_azul",
+      "coordenadas": {
+        "latitud": 20.65921096439441,
+        "longitud": -103.3479488630129
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Constancias_penales",
+      "coordenadas": {
+        "latitud": 20.641332261694593,
+        "longitud": -103.31653204395936
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Museo_ceramica",
+      "coordenadas": {
+        "latitud": 20.642808934988828,
+        "longitud": -103.31273124102744
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Hospital_militar",
+      "coordenadas": {
+        "latitud": 20.668185182581432,
+        "longitud": -103.33215939027058
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Jardin_sanjose",
+      "coordenadas": {
+        "latitud": 20.667924185743654,
+        "longitud": -103.34120379916261
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Mercado_rizo",
+      "coordenadas": {
+        "latitud": 20.667281730178882,
+        "longitud": -103.3357857368785
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Cdu",
+      "coordenadas": {
+        "latitud": 20.65832352664993,
+        "longitud": -103.32325052628853
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Guarderia_revolucion",
+      "coordenadas": {
+        "latitud": 20.657473218852395,
+        "longitud": -103.3210280238409
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Mercado_mar",
+      "coordenadas": {
+        "latitud": 20.676554873915247,
+        "longitud": -103.32327738562999
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Sanjuan_de_dios",
+      "coordenadas": {
+        "latitud": 20.675765327841468,
+        "longitud": -103.33987133487162
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Dos_templos",
+      "coordenadas": {
+        "latitud": 20.672450035432362,
+        "longitud": -103.34724569103896
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Ferrocarril",
+      "coordenadas": {
+        "latitud": 20.646799322605304,
+        "longitud": -103.3456499990876
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Bosque_tlaquepaque",
+      "coordenadas": {
+        "latitud": 20.622128243381432,
+        "longitud": -103.31703880432387
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Glorieta_nheroes",
+      "coordenadas": {
+        "latitud": 20.667466363232556,
+        "longitud": -103.3688379382842
+      },
+      "paquetes": 1
+    }
+  ],
+  "vehiculos": [
+    {
+      "nombre": "Vehiculo_1",
+      "capacidad": 10
+    },
+    {
+      "nombre": "Vehiculo_2",
+      "capacidad": 15
+    }
+  ]
+}
