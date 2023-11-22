@@ -1,0 +1,141 @@
+{
+  "almacen": {
+    "nombre": "Cucei",
+    "coordenadas": {
+      "latitud": 20.654986912292184,
+      "longitud": -103.32528602468746
+    }
+  },
+  "clientes": [
+    {
+      "nombre": "Cut_tonala",
+      "coordenadas": {
+        "latitud": 20.567097930017347,
+        "longitud": -103.22855826464189
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Parque_solidaridad",
+      "coordenadas": {
+        "latitud": 20.658992679404108,
+        "longitud": -103.26941279200226
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Central_camionera_nueva",
+      "coordenadas": {
+        "latitud": 20.62125992276948,
+        "longitud": -103.28492658531243
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Glorieta_minerva",
+      "coordenadas": {
+        "latitud": 20.67658088202121,
+        "longitud": -103.38770329402122
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Estadio_charros",
+      "coordenadas": {
+        "latitud": 20.727509611555124,
+        "longitud": -103.38173891078483
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Expo_gdl",
+      "coordenadas": {
+        "latitud": 20.654232826686723,
+        "longitud": -103.39184436676592
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Arena_vfg",
+      "coordenadas": {
+        "latitud": 20.467329851168348,
+        "longitud": -103.26365264863881
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Tonalá_centro",
+      "coordenadas": {
+        "latitud": 20.624561060979055,
+        "longitud": -103.24165450871362
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Centro_gdl",
+      "coordenadas": {
+        "latitud": 20.686806316551255,
+        "longitud": -103.35072883885388
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Panteon_belen",
+      "coordenadas": {
+        "latitud": 20.687466492054206,
+        "longitud": -103.34530341794114
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Teatro_galerias",
+      "coordenadas": {
+        "latitud": 20.64694766725371,
+        "longitud": -103.40443059120389
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Bosque_centinela",
+      "coordenadas": {
+        "latitud": 20.765449527668757,
+        "longitud": -103.37418812362614
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Basilica_zapopan",
+      "coordenadas": {
+        "latitud": 20.721877280455725,
+        "longitud": -103.39233083313951
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Cucea",
+      "coordenadas": {
+        "latitud": 20.741528092822104,
+        "longitud": -103.38102831391993
+      },
+      "paquetes": 1
+    },
+    {
+      "nombre": "Selva_magica",
+      "coordenadas": {
+        "latitud": 20.729654464143845,
+        "longitud": -103.30672192592526
+      },
+      "paquetes": 1
+    }
+  ],
+  "vehiculos": [
+    {
+      "nombre": "Vehiculo_1",
+      "capacidad": 10
+    },
+    {
+      "nombre": "Vehiculo_2",
+      "capacidad": 15
+    }
+  ]
+}
