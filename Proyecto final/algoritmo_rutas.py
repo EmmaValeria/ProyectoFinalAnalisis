@@ -371,7 +371,7 @@ def algoritmo(*args: Ubicacion) -> list[tuple[Ruta, int]] | str:
         coordenadas = list(zip(*args, *args))
         ubicaciones = (ALMACEN, *coordenadas)
     else:
-        if len(*args) > ((peso_max_camion_1) + (peso_max_camion_2)): return f"Exceso de paquetes para las rutas. Favor de eliminar hasta obtener menos o igual {(peso_max_camion_1) + (peso_max_camion_2)}"
+        if len(args) > ((peso_max_camion_1) + (peso_max_camion_2)): return f"Exceso de paquetes para las rutas. Favor de eliminar hasta obtener menos o igual {(peso_max_camion_1) + (peso_max_camion_2)}"
         ubicaciones = (ALMACEN, *args)
     matriz_distancias = matriz(ubicaciones)
     ahorros = tabla_de_ahorros(matriz_distancias)
@@ -486,11 +486,26 @@ def algoritmo_json() -> None:
 
 if __name__ == "__main__":
 #    algoritmo_json()
-    import big_o
+    '''    import big_o
 
     flag_big_o = True
 
     positive_int_generator = lambda n: big_o.datagen.integers((CAMION_1 + CAMION_2), 0, 10000)
     best, others = big_o.big_o(algoritmo, positive_int_generator, n_repeats=100)
     print(best)
-    
+    '''
+    ubicacion_1 = (10.0, 20.0)
+    ubicacion_2 = (15.0, 25.0)
+    ubicacion_3 = (30.0, 35.0)
+    ubicacion_4 = (5.0, 15.0)
+    resultados = algoritmo(ubicacion_1, ubicacion_2, ubicacion_3, ubicacion_4)
+    for ruta, tamaño in resultados:
+        print(f"Tamaño de la ruta: {tamaño}")
+        for nodo_ubicacion in ruta:
+            print(f"Nombre: {nodo_ubicacion.nombre}")
+            if nodo_ubicacion.anterior:
+                print(f"Anterior: {nodo_ubicacion.anterior.nombre}")
+            if nodo_ubicacion.siguiente:
+                print(f"siguiente: {nodo_ubicacion.siguiente.nombre}")
+            print(f"ubicación: {nodo_ubicacion.ubicacion}")
+            print(" -----")
