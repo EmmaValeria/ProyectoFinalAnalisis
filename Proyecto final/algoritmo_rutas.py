@@ -50,6 +50,10 @@ desde_json = False
 """
 Bandera para obtener ubicaciones de archivo JSON.
 """
+flag_big_o = False
+"""
+Bandera para realizar el analisis por Big O.
+"""
 
 type Ubicacion = tuple[float, float]
 
@@ -363,7 +367,7 @@ def algoritmo(*args: Ubicacion) -> list[tuple[Ruta, int]] | str:
     rutas = []
     ruta_1: Ruta = []
     ruta_2: Ruta = []
-    if BIG_O:
+    if flag_big_o:
         coordenadas = list(zip(*args, *args))
         ubicaciones = (ALMACEN, *coordenadas)
     else:
@@ -484,7 +488,7 @@ if __name__ == "__main__":
 #    algoritmo_json()
     import big_o
 
-    BIG_O = True
+    flag_big_o = True
 
     positive_int_generator = lambda n: big_o.datagen.integers((CAMION_1 + CAMION_2), 0, 10000)
     best, others = big_o.big_o(algoritmo, positive_int_generator, n_repeats=100)
