@@ -1,7 +1,38 @@
+"""
+BackEnd - Algoritmo de Rutas - Equipo 1 - Análisis de Algoritmo - D01.
+
+El siguiente módulo presenta una solución del Problema de Enrutamiento
+de Vehículos (VRP) basado en el algoritmo de Clarke & Wright, también
+llamado de Ahorros, haciendo uso de Python para su codificación.
+
+Example:
+    El uso de este módulo está diseñado para ser utilizado mediante
+    la exportación de la función 'algoritmo' o la función
+    'algoritmo_json' (cuando se tenga un archivo JSON) y de la clase
+    'NodoUbicacion' para su correcto funcionamiento.
+
+    import NodoUbicacion
+    
+    import algoritmo
+    rutas = algoritmo(argumentos)
+
+    import algoritmo_json
+    algoritmo_json()
+    
+Favor de checar la documentación respectiva de
+cada función para obtener más información de su uso.
+
+Este módulo sigue las guías presentadas por `Python Enhancement
+Proposals`_ aceptadas en su documentación versión 3.12.
+
+Docstrings basados en la Guía de Estilo de Google.
+
+.. _Python Enhancement Proposals:
+    https://docs.python.org/3/whatsnew/3.12.html
+"""
 import math
 import copy
 import json
-from typing import Tuple, List
 
 CAMION_1 = 15
 """
@@ -19,8 +50,12 @@ desde_json = False
 """
 Bandera para obtener ubicaciones de archivo JSON.
 """
+flag_big_o = False
+"""
+Bandera para realizar el analisis por Big O.
+"""
 
-Ubicacion = tuple[float, float]
+type Ubicacion = tuple[float, float]
 
 class NodoUbicacion:
     """
@@ -96,7 +131,7 @@ class NodoUbicacion:
     def siguiente(self, nodo_siguiente: object) -> None:
         self._siguiente = nodo_siguiente
 
-Ruta = list[NodoUbicacion]
+type Ruta = list[NodoUbicacion]
 
 def distancia_euclidiana(u1: Ubicacion, u2: Ubicacion) -> float:
     """
@@ -190,8 +225,29 @@ def ubicaciones_a_nodos(ubicaciones: tuple) -> list[NodoUbicacion]:
                 id_ubicacion += 1
     return paquetes
 
-def anadir_a_ruta(ruta: Ruta, max_peso: int, peso: int, ubicacion: NodoUbicacion, posicion: bool) -> int:
-   
+def añadir_a_ruta(ruta: Ruta, max_peso: int, peso: int, ubicacion: NodoUbicacion, posicion: bool) -> int:
+    """
+    Adición de una ubicación a una ruta elegida.
+
+    Permite añadir una nueva ubicación a una ruta. Elige como almacén de
+    la ruta a la primera ubicación a la que se le haya asignado. Esta
+    adición solo puede realizarse como el primer destino o el último.
+
+    Args:
+        ruta: Ruta a la que se le va a añadir una ubicación.
+        max_peso: Peso máximo soportado por el camión de la ruta.
+        peso: Peso actual del camión.
+        ubicacion: Ubicación representada en Nodo. Obtiene los atributos
+            de anterior y siguiente en esta función.
+        posicion: En donde se agregará la ubicación (Primero o Último).
+
+    Returns:
+        Peso actual de la ruta despues del nuevo paquete.
+
+    Error:
+        IndexError: Sucede cuando se agrega la primera ubicación, puesto
+            que se busca un nodo siguiente a pesar de no contarlo.
+    """
     if len(ruta) == 0: ubicacion_copia = copy.deepcopy(ubicacion); ruta.append(ubicacion_copia); return peso
     if posicion:
         ubicacion.anterior = ruta[0]
@@ -235,66 +291,75 @@ def seleccion_ruta(ruta_1: Ruta, ruta_2: Ruta, ubicaciones: list[NodoUbicacion],
     Returns:
         tuple[int, int]: Peso actual de ambas rutas, en enteros. Se regresa un valor nulo si la adición no es posible.
     """
-    def anadir_ruta_1(ruta_1: Ruta, ubicaciones_colindantes: list[NodoUbicacion], ubicacion_posible_1: NodoUbicacion, ubicacion_posible_2: NodoUbicacion, peso_max_1: int, peso_1: int, peso_2: int) -> tuple[int, int]:
-        # Se a�ade la ubicaci�n a la Ruta 1
+    def añadir_ruta_1(ruta_1: Ruta, ubicaciones_colindantes: list[NodoUbicacion], ubicacion_posible_1: NodoUbicacion, ubicacion_posible_2: NodoUbicacion, peso_max_1: int, peso_1: int, peso_2: int) -> tuple[int, int]:
+        # Se añade la ubicación a la Ruta 1
         if ubicacion_posible_1 in ubicaciones_colindantes:
-            if ubicacion_posible_1 == ubicaciones_colindantes[0]: peso_1 = anadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, True); return (peso_1, peso_2)
-            else: peso_1 = anadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, False); return (peso_1, peso_2)
+            if ubicacion_posible_1 == ubicaciones_colindantes[0]: peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, True); return (peso_1, peso_2)
+            else: peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, False); return (peso_1, peso_2)
         else:
-            if ubicacion_posible_2 == ubicaciones_colindantes[0]: peso_1 = anadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_1, True); return (peso_1, peso_2)
-            else: peso_1 = anadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_1, False); return (peso_1, peso_2)
-    
-    def anadir_ruta_2(ruta_2: Ruta, ubicaciones_colindantes: list[NodoUbicacion], ubicacion_posible_1: NodoUbicacion, ubicacion_posible_2: NodoUbicacion, peso_max_2: int, peso_1: int, peso_2: int) -> tuple[int, int]:
-        # Se a�ade la ubicaci�n a la Ruta 2
+            if ubicacion_posible_2 == ubicaciones_colindantes[0]: peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_1, True); return (peso_1, peso_2)
+            else: peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_1, False); return (peso_1, peso_2)
+    def añadir_ruta_2(ruta_2: Ruta, ubicaciones_colindantes: list[NodoUbicacion], ubicacion_posible_1: NodoUbicacion, ubicacion_posible_2: NodoUbicacion, peso_max_2: int, peso_1: int, peso_2: int) -> tuple[int, int]:
+        # Se añade la ubicación a la Ruta 2
         if ubicacion_posible_1 in ubicaciones_colindantes:
-            if ubicacion_posible_1 == ubicaciones_colindantes[2]: peso_2 = anadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, True); return (peso_1, peso_2)
-            else: peso_2 = anadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, False); return (peso_1, peso_2)
+            if ubicacion_posible_1 == ubicaciones_colindantes[2]: peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, True); return (peso_1, peso_2)
+            else: peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, False); return (peso_1, peso_2)
         else:
-            if ubicacion_posible_2 == ubicaciones_colindantes[2]: peso_2 = anadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, True); return (peso_1, peso_2)
-            else: peso_2 = anadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, False); return (peso_1, peso_2)
-    
+            if ubicacion_posible_2 == ubicaciones_colindantes[2]: peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, True); return (peso_1, peso_2)
+            else: peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, False); return (peso_1, peso_2)
     ubicacion_posible_1 = ubicaciones[posibles_rutas[0]]
     ubicacion_posible_2 = ubicaciones[posibles_rutas[1]]
-    
-    if len(ruta_1) == 1: # Si la ruta 1 est� vac�a de direcciones.
-        peso_1 = anadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_1, True)
-        peso_1 = anadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, True)
+    if len(ruta_1) == 1: # Si la ruta 1 esta vacia de direcciones.
+        peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_1, True)
+        peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, True)
         return (peso_1, peso_2)
-    elif len(ruta_2) == 1: # Si la ruta 2 est� vac�a de direcciones.
-        if (ubicacion_posible_1 in ruta_1 or ubicacion_posible_2 in ruta_1) and (peso_1 + 1) <= peso_max_1: # Si una de las posibles direcciones ya est� en ruta 1.
-            ubicaciones_colindantes = [ruta_1[1], ruta_1[-1]]
-            pesos = anadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
-            return pesos
-        else: # Si ninguna de las dos est� en la ruta 1
-            peso_2 = anadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, True)
-            peso_2 = anadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, True)
+    elif len(ruta_2) == 1: # Si la ruta 2 esta vacia de direcciones.
+        if (ubicacion_posible_1 in ruta_1 or ubicacion_posible_2 in ruta_1): # Si una de las posibles direcciones ya esta en ruta 1.
+            if (peso_1 + 1) <= peso_max_1:
+                ubicaciones_colindantes = [ruta_1[1], ruta_1[-1]]
+                pesos = añadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
+                return pesos
+            else: return None
+        else: # Si ninguna de las dos esta en la ruta 1
+            peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, True)
+            peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, True)
             return (peso_1, peso_2)
     else:
         ubicaciones_colindantes = [ruta_1[1], ruta_1[-1], ruta_2[1], ruta_2[-1]]
-        if (ubicacion_posible_1 or ubicacion_posible_2) in ubicaciones_colindantes: # Checa si alguna de las ubicaciones es colindante
+        if (ubicacion_posible_1 in ubicaciones_colindantes) or (ubicacion_posible_2 in ubicaciones_colindantes): # Checa si alguna de las ubicaciones es colindante
             if ((peso_2 + 1) <= peso_max_2 and (ubicacion_posible_1 in ubicaciones_colindantes[2::] or ubicacion_posible_2 in ubicaciones_colindantes[2::])) and ((peso_1 + 1) <= peso_max_1 and (ubicacion_posible_1 in ubicaciones_colindantes[0:2] or ubicacion_posible_2 in ubicaciones_colindantes[0:2])):
-                # Revisa si ambas rutas pueden agregar a la otra ubicaci�n.
+                # Revisa si ambas rutas pueden agregar a la otra ubicación.
                 if len(ruta_1) <= len(ruta_2): # Selecciona la menor
-                    pesos = anadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
+                    pesos = añadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
                     return pesos
                 else:
-                    pesos = anadir_ruta_2(ruta_2, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_2, peso_1, peso_2)
+                    pesos = añadir_ruta_2(ruta_2, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_2, peso_1, peso_2)
                     return pesos
             elif (peso_1 + 1) <= peso_max_1 and (ubicacion_posible_1 in ubicaciones_colindantes[0:2] or ubicacion_posible_2 in ubicaciones_colindantes[0:2]):
-                pesos = anadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
+                pesos = añadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
                 return pesos
-            elif (peso_2 + 1):  # <-- Aqu� faltaba comparar con <= peso_max_2
-                pesos = anadir_ruta_2(ruta_2, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_2, peso_1, peso_2)
+            elif (peso_2 + 1) <= peso_max_2:
+                pesos = añadir_ruta_2(ruta_2, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_2, peso_1, peso_2)
                 return pesos
-            else:
-                return None
-        else:
-            return None
+            else: return None
+        else: return None
 
+def algoritmo(*args: Ubicacion) -> list[tuple[Ruta, int]] | str:
+    """
+    Algoritmo principal del código. Función exportable.
 
+    Esta función desarrolla el algoritmo de Clarke & Wright de
+    paso a paso, creando las variables necesarias para lograrlo y
+    utilizando las demás funciones cuando se necesiten.
+    
 
+    Args:
+        *args: Todas las coordenadas de las ubicaciones a conectar en el
+            problema, representadas como tuplas de dos flotantes (X e Y).
 
-def algoritmo(*args: Ubicacion) -> List[Tuple[Ruta, int]]:
+    Returns:
+        Lista de dos tuplas con dos tipos de datos, la ruta obtenida y su peso.
+    """
     peso_max_camion_1 = CAMION_1
     peso_max_camion_2 = CAMION_2
     peso_1 = 0
@@ -302,50 +367,48 @@ def algoritmo(*args: Ubicacion) -> List[Tuple[Ruta, int]]:
     rutas = []
     ruta_1: Ruta = []
     ruta_2: Ruta = []
-    ubicaciones = (ALMACEN, *args)
+    if flag_big_o:
+        coordenadas = list(zip(*args, *args))
+        ubicaciones = (ALMACEN, *coordenadas)
+    else:
+        if len(*args) > ((peso_max_camion_1) + (peso_max_camion_2)): return f"Exceso de paquetes para las rutas. Favor de eliminar hasta obtener menos o igual {(peso_max_camion_1) + (peso_max_camion_2)}"
+        ubicaciones = (ALMACEN, *args)
     matriz_distancias = matriz(ubicaciones)
     ahorros = tabla_de_ahorros(matriz_distancias)
     nodos_ubicacion = ubicaciones_a_nodos(ubicaciones)
-    peso_1 = anadir_a_ruta(ruta_1, peso_max_camion_1, peso_1, nodos_ubicacion[0], True)
-    peso_2 = anadir_a_ruta(ruta_2, peso_max_camion_2, peso_2, nodos_ubicacion[0], True)
-    
+    peso_1 = añadir_a_ruta(ruta_1, peso_max_camion_1, peso_1, nodos_ubicacion[0], True)
+    peso_2 = añadir_a_ruta(ruta_2, peso_max_camion_2, peso_2, nodos_ubicacion[0], True)
     if len(ahorros) == 0:
-        peso_1 = anadir_a_ruta(ruta_1, peso_max_camion_1, peso_1, nodos_ubicacion[1], True)
+        peso_1 = añadir_a_ruta(ruta_1, peso_max_camion_1, peso_1, nodos_ubicacion[1], True)
         ruta_1[0].siguiente = ruta_1[1]
         ruta_1[0].anterior = ruta_1[-1]
         rutas.append((ruta_1, peso_1))
         rutas.append((ruta_2, peso_2))
         return rutas
-
-    ahorros = dict(sorted(ahorros.items(), key=lambda x: x[1], reverse=True))
-    posibles_ubicaciones = iter(ahorros)
+    ahorros = dict(sorted(ahorros.items(), key = lambda x:x[1], reverse = True))
+    posibles_ubicaciones = list(ahorros.keys())
     ubicaciones_por_visitar = nodos_ubicacion.copy()
     ubicaciones_por_visitar.remove(nodos_ubicacion[0])
-
-    try:
-        while True:
-            indices = next(posibles_ubicaciones)
-            posible_ubicacion_1 = nodos_ubicacion[indices[0]]
-            posible_ubicacion_2 = nodos_ubicacion[indices[1]]
-
-            if posible_ubicacion_1 in ubicaciones_por_visitar or posible_ubicacion_2 in ubicaciones_por_visitar:
-                posible_parte_de_ruta = seleccion_ruta(ruta_1, ruta_2, nodos_ubicacion, indices, peso_max_camion_1,
-                                                       peso_max_camion_2, peso_1, peso_2)
-                if posible_parte_de_ruta is None:
-                    continue
-                else:
-                    if posible_ubicacion_1 in ubicaciones_por_visitar:
-                        ubicaciones_por_visitar.remove(posible_ubicacion_1)
-                    if posible_ubicacion_2 in ubicaciones_por_visitar:
-                        ubicaciones_por_visitar.remove(posible_ubicacion_2)
-                    peso_1 = posible_parte_de_ruta[0]
-                    peso_2 = posible_parte_de_ruta[1]
-            else:
+    iteracion = 0
+    iteracion_faltante = None
+    while(len(ubicaciones_por_visitar) != 0):
+        indices = posibles_ubicaciones[iteracion]
+        posible_ubicacion_1 = nodos_ubicacion[indices[0]]
+        posible_ubicacion_2 = nodos_ubicacion[indices[1]]
+        if posible_ubicacion_1 in ubicaciones_por_visitar or posible_ubicacion_2 in ubicaciones_por_visitar:
+            posible_parte_de_ruta = seleccion_ruta(ruta_1, ruta_2, nodos_ubicacion, indices, peso_max_camion_1, peso_max_camion_2, peso_1, peso_2)
+            if posible_parte_de_ruta == None:
+                if iteracion_faltante == None: iteracion_faltante = iteracion
+                iteracion += 1
                 continue
-
-    except StopIteration:
-        pass  # Termina la iteraci�n
-
+            else:
+                if posible_ubicacion_1 in ubicaciones_por_visitar: ubicaciones_por_visitar.remove(posible_ubicacion_1)
+                if posible_ubicacion_2 in ubicaciones_por_visitar: ubicaciones_por_visitar.remove(posible_ubicacion_2)
+                peso_1 = posible_parte_de_ruta[0]
+                peso_2 = posible_parte_de_ruta[1]
+                if iteracion_faltante != None: iteracion = iteracion_faltante; iteracion_faltante = None
+                else: iteracion += 1
+        else: iteracion += 1; continue
     ruta_1[0].siguiente = ruta_1[1]
     ruta_1[0].anterior = ruta_1[-1]
     rutas.append((ruta_1, peso_1))
@@ -393,7 +456,7 @@ def algoritmo_json() -> None:
     for ruta in rutas:
         id_ruta += 1
         for ubi in ruta[0]: # type = NodoUbicacion
-            if type(ubi.siguiente) == type(None):
+            if type(ubi.siguiente) == type(None): # Solo el almacen
                 if id_ruta == 1:
                     direcciones_ruta_1.append({'nombre': ubi.nombre,
                                        'coordenadas': {'latitud': ubi.ubicacion[0], 'longitud':ubi.ubicacion[1]}})
@@ -419,6 +482,15 @@ def algoritmo_json() -> None:
     with open("rutas.json", "w") as archivo_json:
         json.dump(json_rutas, archivo_json, indent=2)
     desde_json = False
+    
 
 if __name__ == "__main__":
-    algoritmo_json()
+#    algoritmo_json()
+    import big_o
+
+    flag_big_o = True
+
+    positive_int_generator = lambda n: big_o.datagen.integers((CAMION_1 + CAMION_2), 0, 10000)
+    best, others = big_o.big_o(algoritmo, positive_int_generator, n_repeats=100)
+    print(best)
+    
