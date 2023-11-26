@@ -1,0 +1,79 @@
+[
+  {
+    "nombre": "KL",
+    "coordenadas": {
+      "latitud": 34.0,
+      "longitud": 67.0
+    }
+  },
+  {
+    "nombre": "PL",
+    "coordenadas": {
+      "latitud": 20.0,
+      "longitud": 18.932
+    }
+  },
+  {
+    "nombre": "kf",
+    "coordenadas": {
+      "latitud": 89.0,
+      "longitud": 34.0
+    }
+  },
+  {
+    "nombre": "ds",
+    "coordenadas": {
+      "latitud": 12.89,
+      "longitud": 78.0
+    }
+  },
+  {
+    "nombre": "js",
+    "coordenadas": {
+      "latitud": 12.0,
+      "longitud": 67.0
+    }
+  },
+  {
+    "nombre": "df",
+    "coordenadas": {
+      "latitud": 45.0,
+      "longitud": 81.0
+    }
+  },
+  {
+    "nombre": "ert",
+    "coordenadas": {
+      "latitud": 50.0,
+      "longitud": 16.0
+    }
+  },
+  {
+    "nombre": "gf",
+    "coordenadas": {
+      "latitud": 11.0,
+      "longitud": 43.0
+    }
+  },
+  {
+    "nombre": "ewf",
+    "coordenadas": {
+      "latitud": 55.0,
+      "longitud": 77.0
+    }
+  },
+  {
+    "nombre": "dsfg",
+    "coordenadas": {
+      "latitud": 102.0,
+      "longitud": 81.0
+    }
+  },
+  {
+    "nombre": "TPM",
+    "coordenadas": {
+      "latitud": 63.0,
+      "longitud": 83.0
+    }
+  }
+]

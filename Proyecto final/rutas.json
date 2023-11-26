@@ -1,0 +1,100 @@
+{
+  "Ruta_1": {
+    "direcciones": [
+      {
+        "nombre": "almacen",
+        "coordenadas": {
+          "latitud": 20.654986912292184,
+          "longitud": -103.32528602468746
+        },
+        "nombre_direccion_siguiente": "ert",
+        "nombre_direccion_anterior": "dsfg"
+      },
+      {
+        "nombre": "ert",
+        "coordenadas": {
+          "latitud": 50.0,
+          "longitud": 16.0
+        },
+        "nombre_direccion_siguiente": "df",
+        "nombre_direccion_anterior": "almacen"
+      },
+      {
+        "nombre": "df",
+        "coordenadas": {
+          "latitud": 45.0,
+          "longitud": 81.0
+        },
+        "nombre_direccion_siguiente": "TPM",
+        "nombre_direccion_anterior": "ert"
+      },
+      {
+        "nombre": "TPM",
+        "coordenadas": {
+          "latitud": 63.0,
+          "longitud": 83.0
+        },
+        "nombre_direccion_siguiente": "ewf",
+        "nombre_direccion_anterior": "df"
+      },
+      {
+        "nombre": "ewf",
+        "coordenadas": {
+          "latitud": 55.0,
+          "longitud": 77.0
+        },
+        "nombre_direccion_siguiente": "dsfg",
+        "nombre_direccion_anterior": "TPM"
+      },
+      {
+        "nombre": "dsfg",
+        "coordenadas": {
+          "latitud": 102.0,
+          "longitud": 81.0
+        },
+        "nombre_direccion_siguiente": "almacen",
+        "nombre_direccion_anterior": "ewf"
+      }
+    ],
+    "peso": 5
+  },
+  "Ruta_2": {
+    "direcciones": [
+      {
+        "nombre": "almacen",
+        "coordenadas": {
+          "latitud": 20.654986912292184,
+          "longitud": -103.32528602468746
+        }
+      },
+      {
+        "nombre": "gf",
+        "coordenadas": {
+          "latitud": 11.0,
+          "longitud": 43.0
+        },
+        "nombre_direccion_siguiente": "js",
+        "nombre_direccion_anterior": "almacen"
+      },
+      {
+        "nombre": "js",
+        "coordenadas": {
+          "latitud": 12.0,
+          "longitud": 67.0
+        },
+        "nombre_direccion_siguiente": "ds",
+        "nombre_direccion_anterior": "gf"
+      },
+      {
+        "nombre": "ds",
+        "coordenadas": {
+          "latitud": 12.89,
+          "longitud": 78.0
+        },
+        "nombre_direccion_siguiente": "almacen",
+        "nombre_direccion_anterior": "js"
+      }
+    ],
+    "peso": 3
+  }
+}
