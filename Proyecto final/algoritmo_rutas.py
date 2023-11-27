@@ -314,12 +314,18 @@ def seleccion_ruta(ruta_1: Ruta, ruta_2: Ruta, ubicaciones: list[NodoUbicacion],
         peso_1 = añadir_a_ruta(ruta_1, peso_max_1, peso_1, ubicacion_posible_2, True)
         return (peso_1, peso_2)
     elif len(ruta_2) == 1: # Si la ruta 2 esta vacia de direcciones.
-        if (ubicacion_posible_1 in ruta_1 or ubicacion_posible_2 in ruta_1): # Si una de las posibles direcciones ya esta en ruta 1.
+        if ((ubicacion_posible_1 in ruta_1) or (ubicacion_posible_2 in ruta_1)): # Si una de las posibles direcciones ya esta en ruta 1.
             if (peso_1 + 1) <= peso_max_1:
                 ubicaciones_colindantes = [ruta_1[1], ruta_1[-1]]
                 pesos = añadir_ruta_1(ruta_1, ubicaciones_colindantes, ubicacion_posible_1, ubicacion_posible_2, peso_max_1, peso_1, peso_2)
                 return pesos
-            else: return None
+            else:
+                if (ubicacion_posible_1 in ruta_1):
+                    peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, True)
+                    return (peso_1, peso_2)
+                else:
+                    peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, True)
+                    return (peso_1, peso_2)
         else: # Si ninguna de las dos esta en la ruta 1
             peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_1, True)
             peso_2 = añadir_a_ruta(ruta_2, peso_max_2, peso_2, ubicacion_posible_2, True)
@@ -485,15 +491,15 @@ def algoritmo_json() -> None:
     
 
 if __name__ == "__main__":
-#    algoritmo_json()
-    '''    import big_o
+    algoritmo_json()
+    '''import big_o
 
     flag_big_o = True
 
     positive_int_generator = lambda n: big_o.datagen.integers((CAMION_1 + CAMION_2), 0, 10000)
     best, others = big_o.big_o(algoritmo, positive_int_generator, n_repeats=100)
     print(best)
-    '''
+    
     ubicacion_1 = (10.0, 20.0)
     ubicacion_2 = (15.0, 25.0)
     ubicacion_3 = (30.0, 35.0)
@@ -508,4 +514,4 @@ if __name__ == "__main__":
             if nodo_ubicacion.siguiente:
                 print(f"siguiente: {nodo_ubicacion.siguiente.nombre}")
             print(f"ubicación: {nodo_ubicacion.ubicacion}")
-            print(" -----")
+            print(" -----")'''
