@@ -449,6 +449,9 @@ def algoritmo_json() -> None:
     Esta funcion llama al algoritmo principal con la información de las
     ubicaciones encontradas en el archivo JSON del proyecto. Guarda
     las rutas en otro archivo JSON llamado 'rutas'.
+
+    Exception:
+        Aparece al tener mas ubicaciones de las permitidas.
     """
     global desde_json
     desde_json = True
@@ -459,6 +462,7 @@ def algoritmo_json() -> None:
     direcciones_ruta_2 = []
     nombres_ubicaciones, ubicaciones = ubicaciones_json()
     rutas = algoritmo(*ubicaciones)
+    if type(rutas) == str: raise Exception(rutas)
     for ruta in rutas:
         id_ruta += 1
         for ubi in ruta[0]: # type = NodoUbicacion
